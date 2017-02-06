@@ -10,7 +10,7 @@ import chapter11.TextFile;
 
 public class SearchWords {
 
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		File path=new File(".");
 		String[] list;
 		if(args.length==0)
