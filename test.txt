@@ -1,0 +1,260 @@
+
+
+License Key: 4G5G
+Serial Number (Enter to license product): 40-1-9999-140-008270-C
+
+
+Well try this for the License Number
+
+4-02884-12135-48334-11055
+
+I really thought I used.
+
+132-82966
+HEWLETT-PACKARD COMPANY
+
+
+E:\Program Files\Borland\StarTeamMPX Cache Agent 14.0\CacheAgentService.exe -start 
+"E:\Program Files\Borland\StarTeamMPX Cache Agent 14.0\RootCAConfig-APAC.xml" -log 
+"F:\Vaults\ST_APAC\APACCacheAgent.log" -verbose
+
+git@github.hpe.com:chao-lin2/newtest.git
+
+Bennet Feng <bennetf@wicresoft.com>
+xiaohaif@wicresoft.com
+
+
+
+找回密�?3166
+1069070069
+
+192.168.5.128 
+
+host: 192.168.59.103
+port: 49133
+sid: xe
+userid: system
+password: oracle
+
+jdbc:mercury:oracle://192.168.5.128:49133;sid=xe
+
+
+
+
+
+
+
+
+
+
+
+
+
+./ALM_installer.bin <<EOF
+2
+2
+1
+/var/opt/HP/alm/app://192.168.5.128:49133;sid=xe
+ylm
+2
+
+
+
+
+
+
+wget http://prdownloads.sourceforge.net/tcl/tcl8.6.5-src.tar.gz
+https://sourceforge.net/projects/tcl/files/Tcl/8.4.11/tcl8.4.11-src.tar.gz/download
+
+yum install gcc 
+
+tar xfvz tcl8.4.11-src.tar.gz
+
+cd tcl8.4.11/unix  
+./configure --prefix=/usr/tcl --enable-shared
+
+make 
+make install 
+
+
+
+
+wget https://sourceforge.net/projects/expect/files/latest/download?source=files
+tar xzvf expect5.45.tar.gz  
+cd expect5.45
+./configure --prefix=/usr/expect --with-tcl=/usr/tcl/lib --with-tclinclude=../tcl8.4.11/generic 
+make  
+make install  
+ln -s /usr/tcl/bin/expect /usr/expect/bin/expect
+
+# rm -f /var/run/yum.pid
+
+
+C:\oraclexe\app\oracle\product\11.2.0\server\bin;;
+C:\ProgramData\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Users\Apps\Nodejs\;%JAVA_HOME%\bin;C:\WorkDir\maven\apache-maven-3.3.9\bin;%USERPROFILE%\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\
+
+
+
+590852
+
+
+install nodejs on centos
+
+curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
+yum -y install nodejs
+
+npm install -g bower 
+npm install 
+
+
+
+
+
+/opt/app/catalog-publisher/src/public/uploads/catalog_app.json
+
+cd /etc/pki/tls/certs/ 
+cp ca-bundle.crt{,.orig} 
+curl -o ca-bundle.crt http://curl.haxx.se/ca/cacert.pem 
+service docker stop ; sleep 3 ; killall docker ; service docker restart
+
+
+curl http://curl.haxx.se/ca/cacert.pem -o /etc/pki/tls/certs/ca-bundle.crt
+
+curl https://curl.haxx.se/ca/cacert.pem -o /etc/pki/tls/certs/ca-bundle.crt
+
+
+
+
+one
+
+FROM centos
+ENV http_proxy=http://proxy.houston.hpecorp.net:8080 https_proxy=http://proxy.houston.hpecorp.net:8080
+RUN yum -y update
+RUN curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
+RUN yum -y install nodejs
+COPY ./catalog-publisher/  /app/
+RUN cd /app/src && npm install
+RUN npm install -g bower
+WORKDIR /app/src
+CMD [ "node", "./app.js"]
+
+
+docker build -t catpulisher .
+docker run --name winpublisher -p 3000:3000 catpublisher 
+
+
+two
+
+FROM centos
+ENV http_proxy=http://proxy.houston.hpecorp.net:8080 https_proxy=http://proxy.houston.hpecorp.net:8080
+RUN yum -y update
+RUN curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
+RUN yum -y install nodejs git 
+RUN mkdir /opt/app && cd /opt/app && git clone https://github.hpe.com/mobilitycatalog/catalog-publisher.git
+RUN cd /opt/app/catalog-publisher/src && npm install
+RUN npm install -g bower
+WORKDIR /opt/app/catalog-publisher/src
+CMD [ "node", "./app.js"]
+
+docker build -t catpulisher .
+docker run --name winpublisher -p 3000:3000 -it -d catpublisher
+ 
+
+
+
+
+
+
+catalog-client
+
+apt-get update 
+apt-get install -y git 
+
+wget http://mirror.nexcess.net/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+
+tar xvf apache-maven-3.3.9-bin.tar.gz
+
+mv apache-maven-3.3.9  /usr/local/apache-maven
+
+export M2_HOME=/usr/local/apache-maven
+export M2=$M2_HOME/bin 
+export PATH=$M2:$PATH
+
+
+
+Dockerfile
+
+FROM tomcat
+ENV http_proxy=http://proxy.houston.hpecorp.net:8080 https_proxy=http://proxy.houston.hpecorp.net:8080
+ENV MAVEN_VERSION 3.3.9
+RUN apt-get update
+RUN apt-get install -y git maven
+
+RUN mvn -v
+RUN ls -la /etc/maven
+RUN rm -f /etc/maven/settings.xml
+RUN mkdir /home/app
+RUN cd /home/app && git clone https://github.hpe.com/mobilitycatalog/catalog-client.git
+RUN cp /home/app/catalog-client/settings.xml /etc/maven/
+
+RUN cd /home/app/catalog-client && mvn package
+RUN cp /home/app/catalog-client/target/catalog-client-1.8.2-SNAPSHOT.war /usr/local/tomcat/webapps/
+
+EXPOSE 8080
+RUN cd /usr/local/bin
+CMD ["catalina.sh","run"]
+
+docker build -t catalog_client .
+
+docker run -it -d --name catalogcli_instance2 -p 8080:8080 catalog_client
+
+http://192.168.5.133:8080/catalog-client-1.8.2-SNAPSHOT/
+
+
+
+
+
+
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
+
+
+
+
+
+
+
+
+
+CONTENT='    <student>\
+    <name>NewName</name>\
+    <id>NewID</id>\
+</student>'
+
+sed '/<\/Students>/i\'"$CONTENT" file
+
+
+
+CONTENT='<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"\
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\
+   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">\ 
+   <proxies>\
+    <proxy>\
+	  <id>HPE_http</id>\
+	  <active>true</active>\
+	  <protocol>http</protocol>\
+	  <host>proxy.houston.hpecorp.net</host>\
+	  <port>8080</port>\
+	</proxy>\
+	<proxy>\
+	  <id>HPE_https</id>\
+	  <active>true</active>\
+	  <protocol>https</protocol>\
+	  <host>proxy.houston.hpecorp.net</host>\
+	  <port>8080</port>\  
+	</proxy>\
+   </proxies>\
+  </settings>'
+
+  
+sed '1i\'"$CONTENT" hello.xml
