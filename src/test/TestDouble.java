@@ -15,6 +15,15 @@ public class TestDouble {
 		double twoDecimal =  Double.valueOf(newFormat.format(d));
 		double newe =  Double.valueOf(newFormat.format(e));
 		System.out.println(twoDecimal + " " + newe);
+		
+		int max=Integer.parseInt("1.01.95".replaceAll("\\.", ""));
+		int config=Integer.parseInt("1.1.98".replaceAll("\\.", ""));
+		
+		if(config>max){
+			System.out.println("yes");
+		}else{
+			System.out.println("no");
+		}
 	}
 
 
